@@ -1,11 +1,13 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
+import foodDatas from "./yemekdata";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
+
       <HomePage />
     </div>
   );

@@ -13,7 +13,6 @@ function MenuList({ menu }) {
   const adetHandler = (e) => {
     setMiktar(e.target.value);
   };
-
   console.log(ozellik);
 
   return (
@@ -55,10 +54,6 @@ function MenuList({ menu }) {
               className="form-select mb-3"
               onChange={adetHandler}
             >
-              {/* array olustrduk 0-9 a yaptık x+1  1-10 arasında olusturdu. yuakrda default deger 1 ilk gelen deger */}
-              {/* {[...Array(11).keys()].map((x) => (
-                <option value={x}>{x}</option>
-              ))} */}
               {[...Array(10).keys()].map((x) => (
                 <option value={x + 1}>{x + 1}</option>
               ))}
@@ -67,7 +62,7 @@ function MenuList({ menu }) {
         </div>
         <div className="col-md-12 mt-3">
           <h6 className="text-danger">
-            Fiyat: {menu.fiyat[0][ozellik] * miktar}
+            Fiyat:{menu.fiyat[0][ozellik] * miktar} ₺
           </h6>
         </div>
         <div className="div">
