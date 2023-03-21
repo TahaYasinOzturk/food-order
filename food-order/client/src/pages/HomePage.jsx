@@ -4,6 +4,7 @@ import menuler from "../yemekdata";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBurgers } from "../actions/burgerActions";
+import Spinner from "../components/Spinner";
 
 function HomePage() {
   const GET_FOOD_URL = "http://localhost:4000/getFoods";
@@ -28,14 +29,17 @@ function HomePage() {
   return (
     <div>
       <div className="row">
-        {burgers.map((menuItem) => (
-          <div className="col-md-4">
-            <MenuList menu={menuItem} />
-          </div>
-        ))}
+        {loading ? (
+          <Spinner />
+        ) : (
+          burgers.map((menu, index) => (
+            <div key={index} className="col-md-4">
+              <MenuList menu={menu} />
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
 }
-
 export default HomePage;

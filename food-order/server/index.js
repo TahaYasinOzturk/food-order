@@ -9,14 +9,20 @@ const app = express();
 
 //db için hazırlamış olduğumuz js dosyasını çağıralım.
 const db = require("./db");
+//buraya bak router asamasında ekledik
+const burgerModel = require("./models/BurgerModel");
+const burgersRoute = require("./routes/burgersRoute");
 
 //middlewareimiz ile cors kütüphanesini kullanmayı ve json req ve res'lerinde hata almanın önüne geçtk.
 app.use(express.json());
 app.use(cors());
 
-const burgerModel = require("./models/BurgerModel");
+//enson router  asamasında yaptıgımız icin yazdik.
+//servisleri route ile çağırma
+app.use("/api/burgers", burgersRoute);
+
 //getFoods servisi
-app.get("/getFoods", async (req, res) => {
+app.get("/api/burgers", async (req, res) => {
   try {
     const foods = await burgerModel.find({});
     res.send(foods);

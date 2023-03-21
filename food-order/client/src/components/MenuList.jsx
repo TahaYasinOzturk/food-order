@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
+import { useDispatch } from "react-redux";
+import { addToCartAction } from "../actions/cartActions";
 
 function MenuList({ menu }) {
   /*Modal için UseStateler*/
@@ -14,6 +16,13 @@ function MenuList({ menu }) {
     setMiktar(e.target.value);
   };
   console.log(ozellik);
+  //usedispacth  ve dispatch ile aksiyonlari cagiriyoruz.
+  //use selector ile reducerlari cagiriyorsun.
+  //reducerlarda stateler belirleniyor.
+  const dispatch = useDispatch();
+  const addToCart = () => {
+    dispatch(addToCartAction(menu, miktar, ozellik));
+  };
 
   return (
     <div>
@@ -66,9 +75,9 @@ function MenuList({ menu }) {
           </h6>
         </div>
         <div className="div">
-          <a href="#" className="btn btn-outline-danger w-100">
+          <button className="btn btn-outline-danger w-100" onClick={addToCart}>
             SEPETE EKLE
-          </a>
+          </button>
         </div>
       </div>
 
