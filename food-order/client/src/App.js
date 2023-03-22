@@ -18,4 +18,4 @@ function App() {
 
 export default App;
 
-//cartpage den geldik buraya router işlemini yaptık. gerekli olanlari cagirdik
+//cartpage den geldik buraya router işlemini yaptık. gerekli olanlari cagirdik. sepete burgerslar geldi. sonra npm i react-toastify i kurduk.

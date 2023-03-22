@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { useDispatch } from "react-redux";
 import { addToCartAction } from "../actions/cartActions";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function MenuList({ menu }) {
   /*Modal için UseStateler*/
@@ -16,16 +18,35 @@ function MenuList({ menu }) {
     setMiktar(e.target.value);
   };
   console.log(ozellik);
-  //usedispacth  ve dispatch ile aksiyonlari cagiriyoruz.
+  //usedispacth  ve dispatch ile aksiyonlari cagiriyoruz
   //use selector ile reducerlari cagiriyorsun.
   //reducerlarda stateler belirleniyor.
   const dispatch = useDispatch();
-  const addToCart = () => {
+  /*  const addToCart = () => {
     dispatch(addToCartAction(menu, miktar, ozellik));
+  }; */
+  //npm npm i react-toastify ekledik ve addtoCart kismina ekledik yukarıyı degistirdik asagıdaki gibi oldu. cartactiona gectik orda store.js e gectik.
+  const addToCart = () => {
+    if (miktar > 0) {
+      toast("Sepete Ürün Eklendi");
+      dispatch(addToCartAction(menu, miktar, ozellik));
+    }
   };
 
   return (
     <div>
+      <ToastContainer
+        position="top-right"
+        autoClose={500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="dark"
+      />
       <div
         className="card m-auto my-3 shadow-lg p-3 bg-body-tertiary rounded"
         style={{ width: "20rem" }}
@@ -63,15 +84,17 @@ function MenuList({ menu }) {
               className="form-select mb-3"
               onChange={adetHandler}
             >
-              {[...Array(10).keys()].map((x) => (
-                <option value={x + 1}>{x + 1}</option>
+              {[...Array(10).keys()].map((x, index) => (
+                <option key={index} value={x + 1}>
+                  {x + 1}
+                </option>
               ))}
             </select>
           </div>
         </div>
         <div className="col-md-12 mt-3">
           <h6 className="text-danger">
-            Fiyat:{menu.fiyat[0][ozellik] * miktar} ₺
+            Fiyat: {menu.fiyat[0][ozellik] * miktar}
           </h6>
         </div>
         <div className="div">

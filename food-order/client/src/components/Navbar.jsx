@@ -7,7 +7,7 @@ function Navbar() {
 
   const { cartItems } = cartState;
 
-  //sepete ekleme işlemi yaptık sonra cartpage.jsx olusturduk orda işlemere devam ettik.
+  //sepete ekleme işlemi yaptık sonra cartpage.jsx olusturduk orda işlemlere devam ettik.
   return (
     <div>
       <nav className="navbar navbar-dark navbar-expand-lg bg-dark">

@@ -8,8 +8,15 @@ const finalReducer = combineReducers({
   getAllBurgersReducer: getAllBurgersReducer,
   addToCartReducer: addToCartReducer,
 });
-
-const initialState = {};
+// burayı yaptık  asagıdakileri yazdik reducra yoladik. consoledan kontrol ettik görmek icin. application local storgaeden geldigini gözlemedik. sonra cartpagejsx i düzenlemeye gectik
+const cartItems = localStorage.getItem("cartItems")
+  ? JSON.parse(localStorage.getItem("cartItems"))
+  : [];
+const initialState = {
+  addToCartReducer: {
+    cartItems: cartItems,
+  },
+};
 
 const compose = composeWithDevTools({});
 
