@@ -12,6 +12,7 @@ const db = require("./db");
 //buraya bak router asamasında ekledik
 const burgerModel = require("./models/BurgerModel");
 const burgersRoute = require("./routes/burgersRoute");
+const usersRoute = require("./routes/usersRoute");
 
 //middlewareimiz ile cors kütüphanesini kullanmayı ve json req ve res'lerinde hata almanın önüne geçtk.
 app.use(express.json());
@@ -19,7 +20,11 @@ app.use(cors());
 
 //enson router  asamasında yaptıgımız icin yazdik.
 //servisleri route ile çağırma
+//burger servisleri
 app.use("/api/burgers", burgersRoute);
+
+//user servisleri
+app.use("/api/users", usersRoute);
 
 //getFoods servisi
 app.get("/api/burgers", async (req, res) => {

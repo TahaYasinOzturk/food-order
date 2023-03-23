@@ -16,12 +16,20 @@ function CartPage() {
 
   const dispatch = useDispatch();
 
+  const toplamFiyat = cartItems.reduce((x, urun) => x + urun.fiyatlar, 0);
+
   return (
     <div>
       <div className="container">
         <div className="text-center">
           <h2 className="display-2 text-warning">Sepetim</h2>
-          {/* Adim 7 :sepette ürün yok ekledik */}
+          {toplamFiyat == 0 ? (
+            <></>
+          ) : (
+            <h4 className="text-danger">Toplam Fiyat: {toplamFiyat} ₺</h4>
+          )}
+
+          {/* Adim 7 :sepette ürün yok ekledik  ürün özelligini ekledik. yukarıya toplam fiyat ekledik reduce ile fiyatlari topladik ternary ile yaptık server tarafina gectik.*/}
           {cartItems.length == 0 ? (
             <div className="alert alert-danger mt-5" role="alert">
               Sepetinizde ürün bulunmamaktadır :(
