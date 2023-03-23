@@ -22,7 +22,7 @@ app.use(cors());
 //servisleri route ile çağırma
 //burger servisleri
 app.use("/api/burgers", burgersRoute);
-
+//user servisi tanımladik user routeda ayarlamaları yaptık const usersRoute = require("./routes/usersRoute");
 //user servisleri
 app.use("/api/users", usersRoute);
 
