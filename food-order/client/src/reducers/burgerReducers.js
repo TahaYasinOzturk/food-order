@@ -1,7 +1,11 @@
 //ilk olarak parametre alıp bu deistikce kendini yeniler hem parametreyi hem action dinler
 // state={burgers:[]}, action bos dizi yaptık ...state, bu yüzden ... state yazdik gelen veri ile dolacak. burgers ı köfteler yaptık export const getAllBurgersReducer = (state = { burgers: [] }, action) => {  sonra asagıda case "GET_BURGERS_SUCCESS":       return {        loading: false,         köfteler: action.payload,       };
 //homepage de burgers lari köfteler yaptık state e isim verdik köfteler diye ve onun icini doldurduk react dev tooldan görebilirisn köfteler yazisini.
+//Not: ilk durumda baslangıcta bos arrya olmaılı yoksa undined hatasi alırsın. baslangıc arrayi atadik.
+// ilki state dir 2. paraametre action dir. reducrlarin.
+//action.type i algılar ve payloadini yakalar. payload da response.data verisi vardır. burgers verisinde datalarmiz duruyordur simdi.
 
+// hompage de use slector ile cekiyoruz obje dönüyor. stateiin icinde   bu cektigimizin icindekileri dedustruction yaptık ve icindeki istedigklerimi aldık.
 export const getAllBurgersReducer = (state = { burgers: [] }, action) => {
   switch (action.type) {
     case "GET_BURGERS_REQUEST":
