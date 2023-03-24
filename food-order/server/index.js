@@ -13,6 +13,7 @@ const db = require("./db");
 const burgerModel = require("./models/BurgerModel");
 const burgersRoute = require("./routes/burgersRoute");
 const usersRoute = require("./routes/usersRoute");
+const ordersRoute = require("./routes/ordersRoute");
 
 //middlewareimiz ile cors kütüphanesini kullanmayı ve json req ve res'lerinde hata almanın önüne geçtk.
 app.use(express.json());
@@ -27,15 +28,17 @@ app.use("/api/burgers", burgersRoute);
 app.use("/api/users", usersRoute);
 
 //getFoods servisi
-app.get("/api/burgers", async (req, res) => {
-  try {
-    const foods = await burgerModel.find({});
-    res.send(foods);
-    // console.log(users);
-  } catch (err) {
-    console.log(err);
-  }
-});
+// app.get("/api/burgers", async (req, res) => {
+//   try {
+//     const foods = await burgerModel.find({});
+//     res.send(foods);
+//     // console.log(users);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
+//order servisleri
+app.use("api/orders", ordersRoute);
 
 //serverımızı inşa edeceğimiz portu belirledik.
 const PORT = 4000;

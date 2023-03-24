@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addToCartAction, deleteFromCartAction } from "../actions/cartActions";
+import CheckoutPage from "./CheckoutPage";
 
 function CartPage() {
   const cartState = useSelector((state) => state.addToCartReducer);
@@ -16,6 +17,7 @@ function CartPage() {
   const navigate = useNavigate();
   const toplamFiyat = cartItems.reduce((x, urun) => x + urun.fiyatlar, 0);
 
+  //23.03 ödeme islemileri icin  const userState = useSelector((state) => state.loginUserReducer);
   const checkOutHandler = () => {
     if (!currentUser) {
       navigate("/login");
@@ -32,12 +34,13 @@ function CartPage() {
           ) : (
             <>
               <h4 className="text-danger">Toplam Fiyat: {toplamFiyat} ₺</h4>
-              <button
+              <CheckoutPage toplamfiyat={toplamFiyat} />
+              {/* <button
                 className="btn btn-outline-danger my-3 w-25"
                 onClick={checkOutHandler}
               >
                 HEMEN ÖDE!
-              </button>
+              </button> */}
             </>
           )}
 

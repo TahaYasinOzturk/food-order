@@ -54,7 +54,7 @@ export const loginUserAction = (user) => async (dispatch, getState) => {
       timer: 1500,
     });
     localStorage.setItem("currentUser", JSON.stringify(response.data));
-    //kullanicin bilgisini tutması icin local storage yaptık.
+    //kullanicin bilgisini tutması icin local storage yaptık.// window.location.href = "/"; bunları sonra ekledik
     window.location.href = "/";
   } catch (error) {
     dispatch({ type: "USER_LOGIN_FAILED", payload: error });
