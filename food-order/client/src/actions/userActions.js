@@ -65,3 +65,9 @@ export const loginUserAction = (user) => async (dispatch, getState) => {
     });
   }
 };
+
+//logout icin yazdık  navbara  logoutHandler tanımladik buttona gittik.
+export const logoutUserAction = () => {
+  localStorage.removeItem("currentUser");
+  window.location.href = "/";
+};

@@ -1,6 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { logoutUserAction } from "../actions/userActions";
 
 //sepete ekleme işlemi yaptık sonra cartpage.jsx olusturduk orda işlemlere devam ettik.
 function Navbar() {
@@ -8,6 +9,11 @@ function Navbar() {
   const userState = useSelector((state) => state.loginUserReducer);
   const { cartItems } = cartState;
   const { currentUser } = userState;
+  const dispatch = useDispatch();
+
+  const logoutHandler = async () => {
+    await dispatch(logoutUserAction());
+  };
   return (
     <div>
       <nav className="navbar navbar-dark navbar-expand-lg bg-dark">
@@ -52,7 +58,9 @@ function Navbar() {
                       </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item">Logout</a>
+                      <Link className="dropdown-item" onClick={logoutHandler}>
+                        Logout
+                      </Link>
                     </li>
                   </ul>
                 </div>
