@@ -38,7 +38,7 @@ app.use("/api/users", usersRoute);
 //   }
 // });
 //order servisleri
-app.use("api/orders", ordersRoute);
+app.use("/api/orders", ordersRoute);
 
 //serverımızı inşa edeceğimiz portu belirledik.
 const PORT = 4000;
