@@ -22,6 +22,7 @@ function CartPage() {
     if (!currentUser) {
       navigate("/login");
     }
+    console.log("ödeme ekranına aktaralım");
   };
 
   return (
@@ -51,7 +52,10 @@ function CartPage() {
             </div>
           ) : (
             cartItems.map((urun) => (
-              <div className="row border border-3 border-warning shadow-lg p-3 mb-5 bg-body-tertiary rounded bg-light text-warning">
+              <div
+                key={urun._id}
+                className="row border border-3 border-warning shadow-lg p-3 mb-5 bg-body-tertiary rounded bg-light text-warning"
+              >
                 <div className="col-md-4">
                   <img src={urun.img} alt="" style={{ width: "200px" }} />
                 </div>

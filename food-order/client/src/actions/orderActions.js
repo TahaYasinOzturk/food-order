@@ -25,3 +25,21 @@ export const checkoutOrderAction =
       console.log(error);
     }
   };
+
+export const getUsersOrdersAction = () => async (dispatch, getState) => {
+  const currentUser = getState().loginUserReducer.currentUser;
+
+  dispatch({ type: "GET_USER_ORDERS_REQUEST" });
+
+  try {
+    const response = await axios.post(
+      "http://localhost:4000/api/orders/getusersorders",
+      { userid: currentUser._id }
+    );
+    dispatch({ type: "GET_USER_ORDERS_SUCCESS", payload: response.data });
+  } catch (error) {
+    dispatch({ type: "GET_USER_ORDERS_FAILED", payload: error });
+  }
+};
+
+//reducerı yazalım orderreducerda getUsersOrdersReducer yazildi.

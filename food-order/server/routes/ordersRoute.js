@@ -57,4 +57,17 @@ router.post("/checkout", async (req, res) => {
   }
 });
 
+// getuserorders  mongodbcomppas den ordersdan orderitemslari gördük  user idye göre cekicez siparişleri
+//.sort({ _id: -1 }); tersten gözükmesi icin -1 yaptık kullanici en son yaptıgını görsün diye
+router.post("/getusersorders", async (req, res) => {
+  const { userid } = req.body;
+
+  try {
+    const orders = await OrderModel.find({ userid: userid }).sort({ _id: -1 });
+    res.send(orders);
+  } catch (error) {
+    res.status(400).json({ message: "Siparişlere Erişilemiyor." });
+  }
+});
+
 module.exports = router;

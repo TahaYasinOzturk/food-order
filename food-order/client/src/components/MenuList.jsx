@@ -17,7 +17,10 @@ function MenuList({ menu }) {
   const adetHandler = (e) => {
     setMiktar(e.target.value);
   };
-  console.log(ozellik);
+
+  //burdan kontrol edebilirsin
+  //console.log(ozellik);
+
   //usedispacth  ve dispatch ile aksiyonlari cagiriyoruz
   //use selector ile reducerlari cagiriyorsun.
   //reducerlarda stateler belirleniyor.
