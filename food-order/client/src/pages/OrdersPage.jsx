@@ -69,6 +69,7 @@ function OrdersPage() {
               <p>Tarih: {order.createdAt.substring(0, 10)} </p>
               <p>İşlem No: {order.transactionId} </p>
               <p>Sipariş No: {order._id} </p>
+              console.log({order.transactionId});
             </div>
           </div>
         </div>
