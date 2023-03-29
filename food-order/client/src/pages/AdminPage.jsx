@@ -6,6 +6,7 @@ import EditMenu from "./EditMenu";
 import MenusList from "./MenusList";
 import OrdersList from "./OrdersList";
 import UsersList from "./UsersList";
+import { toast, ToastContainer } from "react-toastify";
 
 function AdminPage() {
   const userState = useSelector((state) => state.loginUserReducer);
@@ -20,6 +21,18 @@ function AdminPage() {
   // current user adminse giricek deilse anasayfaya gidecek.
   return (
     <div>
+      <ToastContainer
+        position="top-right"
+        autoClose={500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="dark"
+      />
       <h2 className="display-2 text-dark my-2 fw-bold">YÖNETİCİ PANELİ</h2>
       <hr />
       <nav className="navbar navbar-expand-lg bg-warning w-50 mx-auto">

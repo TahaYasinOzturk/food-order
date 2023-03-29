@@ -3,7 +3,11 @@ import thunk from "redux-thunk";
 import { getAllBurgersReducer } from "./reducers/burgerReducers";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { addToCartReducer } from "./reducers/cartReducers";
-import { loginUserReducer, registerUserReducer } from "./reducers/userReducers";
+import {
+  getAllUsersReducer,
+  loginUserReducer,
+  registerUserReducer,
+} from "./reducers/userReducers";
 import {
   checkoutOrderReducer,
   getUserOrdersReducer,
@@ -17,6 +21,7 @@ const finalReducer = combineReducers({
   loginUserReducer: loginUserReducer,
   checkoutOrderReducer: checkoutOrderReducer,
   getUserOrdersReducer: getUserOrdersReducer,
+  getAllUsersReducer: getAllUsersReducer,
 });
 //user reducer i ekledik sonra register.jsx olusturduk.
 // burayı yaptık  asagıdakileri yazdik reducra yoladik. consoledan kontrol ettik görmek icin. application local storgaeden geldigini gözlemedik. sonra cartpagejsx i düzenlemeye gectik.Local kısmi asadgidaki kullanım olacak.

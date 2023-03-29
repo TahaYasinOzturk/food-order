@@ -47,4 +47,27 @@ router.post("/login", async (req, res) => {
   }
 });
 
+//Tüm kullanıcılar sıra9:
+router.get("/getAllUsers", async (req, res) => {
+  try {
+    const users = await UserModel.find({});
+    res.send(users);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//Kullanıcı silme sıra:14
+router.post("/deleteUser", async (req, res) => {
+  const userid = req.body.userid;
+  //  const {burgerid} = req.body --> destruct ederek alma
+
+  try {
+    await UserModel.findOneAndDelete({ _id: userid });
+    res.send("Kullanıcı silme başarılı");
+  } catch {
+    res.status(400).json({ message: error });
+  }
+});
+
 module.exports = router;
