@@ -59,6 +59,23 @@ export const addBurgerAction = (menu) => async (dispatch) => {
   }
 };
 
+//sıra14: editmenu için  sonra reducer yazıcaz.
+export const getBurgerById = (burgerid) => async (dispatch) => {
+  dispatch({ type: "GET_BURGER_BY_ID_REQUEST" });
+
+  try {
+    const response = await axios.post(
+      "http://localhost:4000/api/burgers/getBurgerById",
+      { burgerid }
+    );
+
+    console.log(response);
+    dispatch({ type: "GET_BURGER_BY_ID_SUCCESS", payload: response.data });
+  } catch (error) {
+    dispatch({ type: "GET_BURGER_BY_ID_FAILED", payload: error });
+  }
+};
+
 // export const deleteBurgerAction = (burgerid) => async (dispatch) => {
 //   try {
 //     const response = await axios.post(

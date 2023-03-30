@@ -46,4 +46,17 @@ router.post("/addBurger", async (req, res) => {
   } catch (error) {}
 });
 
+//sıra16:
+//Get burger By Id Servisi
+router.post("/getBurgerById", async (req, res) => {
+  const burgerid = req.body.burgerid;
+
+  try {
+    const burger = await burgerModel.findOne({ _id: burgerid });
+    res.send(burger);
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
+});
+
 module.exports = router;

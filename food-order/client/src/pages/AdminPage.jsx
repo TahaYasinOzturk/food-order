@@ -13,11 +13,13 @@ function AdminPage() {
   const navigate = useNavigate();
   const { currentUser } = userState;
 
+  //sıra:13) const user = localStorage.getItem("currentUser");  giriş olmadıgı zaman /admin yazınca admin sayfasına gitmemesi ve tekrara anasayfaya yönlendirmesi icin yazdık.
   useEffect(() => {
-    if (currentUser.isAdmin != true) {
+    if (currentUser == null || currentUser.isAdmin != true) {
       navigate("/");
     }
   }, [currentUser]);
+
   // current user adminse giricek deilse anasayfaya gidecek.
   return (
     <div>

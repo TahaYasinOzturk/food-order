@@ -49,6 +49,30 @@ export const addBurgersReducer = (state = {}, action) => {
       };
 
     default:
-      break;
+      return state;
+  }
+};
+
+//sıra15: tek bir deger döncek id ye göre onu kullanıcaz. (state = { burger: null } yerine {  } da olabilir.
+export const getBurgerByIdReducer = (state = { burger: null }, action) => {
+  switch (action.type) {
+    case "GET_BURGER_BY_ID_REQUEST":
+      return {
+        loading: true,
+        ...state,
+      };
+    case "GET_BURGER_BY_ID_SUCCESS":
+      return {
+        loading: false,
+        success: true,
+        burger: action.payload,
+      };
+    case "GET_BURGER_BY_ID_FAILED":
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
   }
 };
